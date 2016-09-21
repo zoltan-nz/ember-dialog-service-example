@@ -1,0 +1,11 @@
+
+<div class="list-group">
+  {{#each model as |product|}}
+
+    {{#link-to 'product' product class='list-group-item'}}{{product.name}}{{/link-to}}
+
+  {{/each}}
+</div>
+
+
+{{outlet}}

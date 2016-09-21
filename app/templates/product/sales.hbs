@@ -1,0 +1,15 @@
+<h3>Sale history</h3>
+
+<table class="table table-hover table-bordered">
+  <thead>
+    <th>Date</th>
+    <th>Amount</th>
+  </thead>
+  <tbody>
+    {{#each model as |sale| }}
+      <tr>
+        <td>{{moment-format sale.date}}</td>
+        <td>{{sale.amount}}</td></tr>
+    {{/each}}
+  </tbody>
+</table>

@@ -1,0 +1,17 @@
+<table class="table table-hover table-bordered">
+  <tbody>
+    <tr><td>Name:</td><td>{{model.name}}</td></tr>
+    <tr><td>Food:</td><td>{{model.isFood}}</td></tr>
+    <tr><td>Clothes:</td><td>{{model.isClothes}}</td></tr>
+    <tr><td>Furniture:</td><td>{{model.isFurniture}}</td></tr>
+    <tr><td>Price:</td><td>{{model.price}}</td></tr>
+  </tbody>
+</table>
+
+<ul class="nav nav-tabs">
+  {{#link-to 'product.sales' model.id tagName='li'}}<a>Sales</a>{{/link-to}}
+  {{#link-to 'product.details' model.id tagName='li'}}<a>Details</a>{{/link-to}}
+</ul>
+
+
+{{outlet}}
