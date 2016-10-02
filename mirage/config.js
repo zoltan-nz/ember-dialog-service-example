@@ -29,4 +29,11 @@ export default function() {
   this.resource('products');
   this.resource('sales');
   this.resource('details');
+
+  this.get('products', function({ products }) {
+
+    let json = this.serialize(products.all());
+
+    return json;
+  });
 }

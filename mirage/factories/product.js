@@ -16,7 +16,7 @@ export default Factory.extend({
 
   afterCreate(product, server) {
     server.createList('sale', 10, { product });
-    server.create('detail', { product });
+    server.createList('detail', 1, { product });
   }
 
 
