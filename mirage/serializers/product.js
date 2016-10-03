@@ -1,25 +1,40 @@
 import { JSONAPISerializer } from 'ember-cli-mirage';
 import Ember from 'ember';
 
+const { isArray } = Ember;
+
 export default JSONAPISerializer.extend({
 
   serialize(response, request) {
-
-    let json = JSONAPISerializer.prototype.serialize.apply(this, arguments);
-
-    if (Ember.isArray(json.data)) {
-      json.data.map((product) => {
-        let detailData = product.relationships.detail.data;
-        product.relationships.detail.data = Ember.isArray(detailData) ? detailData[0] : detailData;
-        return product;
-      });
-    } else {
-      let productData = json.data;
-      let detailData = productData.relationships.detail.data;
-      productData.relationships.detail.data = Ember.isArray(detailData) ? detailData[0] : detailData;
-      json.data = productData;
-    }
+    let json = this._serializeToJSON(response, request);
+    json.data = this._convertHasManyToBelongsTo(json.data);
 
     return json;
+  },
+
+  _serializeToJSON(response, request) {
+    return JSONAPISerializer.prototype.serialize.apply(this, [response, request]);
+  },
+
+  _convertHasManyToBelongsTo(productData) {
+    return isArray(productData) ? this._processMoreProduct(productData) : this._processOneProduct(productData);
+  },
+
+  _processMoreProduct(productData) {
+    return productData.map((product) => {
+      this._convertDetailsToObject(product);
+      return product;
+    });
+  },
+
+  _processOneProduct(productData) {
+    return this._convertDetailsToObject(productData);
+  },
+
+  _convertDetailsToObject(product) {
+    let detailData = product.relationships.detail.data;
+    product.relationships.detail.data = isArray(detailData) ? detailData[0] : detailData;
+
+    return product;
   }
 });
