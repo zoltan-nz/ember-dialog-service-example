@@ -7,10 +7,12 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('dialog');
   this.route('product', { path: '/:product_id' }, function() {
     this.route('details');
     this.route('sales');
   });
+  this.alias('alias-dialog', '/alias-dialog', 'dialog');
 });
 
 export default Router;
