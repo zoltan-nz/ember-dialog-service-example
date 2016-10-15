@@ -11,6 +11,7 @@ Router.map(function() {
     this.route('details');
     this.route('sales');
   });
+  this.route('modal-dialog');
 });
 
 export default Router;

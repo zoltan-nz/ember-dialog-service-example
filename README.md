@@ -113,3 +113,10 @@ Code after refactoring:
     return product;
   }
 ```
+
+# Experimenting with nested routes and modals
+
+$ ember g route modal-dialog
+
+Add named outlet to applicaiton.hbs
+
