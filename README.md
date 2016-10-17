@@ -116,7 +116,7 @@ Code after refactoring:
 
 # Experimenting with nested routes and modals
 
-$ ember g route modal-dialog
+$ ember g controller modal-dialog
 
-Add named outlet to applicaiton.hbs
+Add named outlet to application.hbs
 

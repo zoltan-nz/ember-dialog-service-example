@@ -4,12 +4,13 @@ export default Ember.Route.extend({
 
   actions: {
 
-    openModalDialog() {
+    openModalDialog(model) {
 
       this.render('modal-dialog', {
         into: 'application',
         outlet: 'modal',
-        controller: 'modal-dialog'
+        controller: 'modal-dialog',
+        model
       });
 
     },
@@ -23,5 +24,4 @@ export default Ember.Route.extend({
 
     }
   }
-
 });
