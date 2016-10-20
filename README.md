@@ -116,7 +116,24 @@ Code after refactoring:
 
 # Experimenting with nested routes and modals
 
-$ ember g controller modal-dialog
+1. Add named outlet to application.hbs
+2. Create a Dialog Service
+3. Inject the dialog service in routes, controllers and components.
 
-Add named outlet to application.hbs
+The service features:
+- access to the application controller and route handler
+- render and detach modal window to/from the named outlet
 
+Access to controller / route handler
+
+```
+// Ember <= v2.2
+this.container.lookup('controller:application');
+// Ember >= v2.3
+Ember.getOwner.lookup('controller:application');
+```
+
+```
+$ ember g service dialog
+$ ember g initializer dialog
+```

@@ -1,17 +1,20 @@
 <h3>Sale history</h3>
 
-<button class="btn btn-default" {{action "openModalDialog" dialogModel}}>Open Modal Dialog</button>
+<button class="btn btn-default" {{action "instantHelp"}}>Instant Help</button>
+<br>
+<br>
 
 <table class="table table-hover table-bordered">
-  <thead>
-    <th>Date</th>
-    <th>Amount</th>
-  </thead>
-  <tbody>
-    {{#each model as |sale| }}
-      <tr>
-        <td>{{moment-format sale.date}}</td>
-        <td>{{sale.amount}}</td></tr>
-    {{/each}}
-  </tbody>
+	<thead>
+		<th>Date</th>
+		<th>Amount</th>
+	</thead>
+	<tbody>
+		{{#each model as |sale| }}
+		<tr>
+			<td>{{moment-format sale.date}}</td>
+			<td>{{sale.amount}}</td>
+		</tr>
+		{{/each}}
+	</tbody>
 </table>
