@@ -137,3 +137,6 @@ Ember.getOwner.lookup('controller:application');
 $ ember g service dialog
 $ ember g initializer dialog
 ```
+
+Register a factory
+singleton:false

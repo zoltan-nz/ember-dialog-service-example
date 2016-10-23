@@ -1,3 +1,9 @@
 {{#modal-dialog title='Instant Help'}}
-<h1>Instant Help Dialog</h1>
+  <h1>Instant Help Dialog</h1>
+
+  Active component: {{stepManager.activeComponent}}
+
+  {{component stepManager.activeComponent next='next' previous='previous'}}
+
+  <button {{action 'previous'}}>PRE</button> <button {{action 'next'}}>NEXT</button>
 {{/modal-dialog}}
