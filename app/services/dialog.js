@@ -1,9 +1,5 @@
-import Ember from 'ember';
-
-const {
-  Service,
-  getOwner
-} = Ember;
+import Service from 'ember-service';
+import getOwner from 'ember-owner/get';
 
 export default Service.extend({
 
@@ -24,9 +20,9 @@ export default Service.extend({
       model
     });
 
-    const appCont = this.applicationController();
-    appCont.set('showDialog', true);
-    appCont.addObserver('showDialog', () => { this.close(); });
+    const appCtrl = this.applicationController();
+    appCtrl.set('showDialog', true);
+    appCtrl.addObserver('showDialog', () => { this.close(); });
   },
 
   close() {
@@ -36,8 +32,8 @@ export default Service.extend({
       parentView: 'application'
     });
 
-    const appCont = this.applicationController();
-    appCont.removeObserver('showDialog');
-    appCont.set('showDialog', false);
+    const appCtrl = this.applicationController();
+    appCtrl.removeObserver('showDialog');
+    appCtrl.set('showDialog', false);
   }
 });
